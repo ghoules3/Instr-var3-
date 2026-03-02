@@ -27,7 +27,7 @@ hdfs dfs -ls -h /user/hadoop/lab_01_var3/raw
 Вполнить в JupyterLab ноутбук Lab01_Var03.ipynb
 
 ### 4) Результаты
-Выходные данные сохраняются в:  
+Выходные данные сохраняются в HDFS (Spark сохраняет CSV как директории с *.csv и _SUCCESS):  
 /user/hadoop/lab_01_var3/output/dead_stock_30d  
 /user/hadoop/lab_01_var3/output/low_stock  
 /user/hadoop/lab_01_var3/output/heatmap_table  
