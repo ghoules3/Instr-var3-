@@ -1,54 +1,41 @@
 # Отчет по лабораторной работе 1
 Бочков Андрей БД251-м Вариант №3
 
----
-
 ## 1. Цель работы
-1. Загрузить исходные данные в HDFS.
-2. Выполнить обработку данных в Apache Spark с использованием PySpark (DataFrame API) и Spark SQL.
-3. Построить визуализацию (heatmap) и сохранить результаты в HDFS.
-
----
+1. Загрузить исходные данные в HDFS
+2. Выполнить обработку данных в Apache Spark с использованием PySpark и Spark SQL
+3. Построить визуализацию (heatmap) и сохранить результаты в HDFS
 
 ## 2. Исходные данные
-Датасет: **OnlineRetail** (Kaggle)  
-Ссылка: https://www.kaggle.com/datasets/jyotikushwaha545/onlineretail
+Датасет: https://www.kaggle.com/datasets/jyotikushwaha545/onlineretail
 
 Основные поля:
-- `InvoiceNo` — номер счета/документа
-- `StockCode` — код товара
-- `Description` — описание товара
-- `Quantity` — количество (возможны отрицательные значения для возвратов)
-- `InvoiceDate` — дата/время операции
-- `UnitPrice` — цена за единицу
-- `CustomerID` — идентификатор клиента
-- `Country` — страна
-
----
+- `InvoiceNo` - номер счета/документа
+- `StockCode` - код товара
+- `Description` - описание товара
+- `Quantity` - количество (возможны отрицательные значения для возвратов)
+- `InvoiceDate` - дата/время
+- `UnitPrice` - цена за единицу
+- `CustomerID` - идентификатор клиента
+- `Country` - страна
 
 ## 3. Подготовка окружения и HDFS
-
 ### 3.1 Запуск HDFS и YARN
 Запуск сервисов и проверка процессов:
-
 ![jps](screenshots/01_jps.png)
 
 ### 3.2 Создание директорий и загрузка данных в HDFS
-Структура директорий в HDFS: `raw` (исходные данные), `output` (результаты).
-
+Структура директорий в HDFS:
 ![hdfs_dirs](screenshots/02_hdfs_dirs.png)
 
 Загрузка CSV в HDFS и проверка наличия файла:
-
 ![hdfs_raw_ls](screenshots/03_hdfs_raw_ls.png)
 
 Проверка первых строк файла:
-
 ![hdfs_head](screenshots/04_hdfs_head.png)
 
 ### 3.3 Web UI
 NameNode UI (HDFS):
-
 ![namenode_ui](screenshots/05_9870.png)
 
 YARN UI:
