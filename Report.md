@@ -35,14 +35,11 @@
 ![hdfs_head](screenshots/04_hdfs_head.png)
 
 ### 3.3 Web UI
-NameNode UI (HDFS):
-![namenode_ui](screenshots/05_9870.png)
+HDFS:
+![hdfs](screenshots/05_9870.png)
 
-YARN UI:
-
-![yarn_ui](screenshots/06_8088.png)
-
----
+YARN:
+![yarn](screenshots/06_8088.png)
 
 ## 4. Загрузка данных в Spark и предобработка
 
