@@ -18,10 +18,10 @@ start-dfs.sh
 start-yarn.sh
 jps
 
-### 2) Загрузка исходного CSV в HDFS
-hdfs dfs -mkdir -p /user/hadoop/lab_01_var3/raw
-hdfs dfs -put OnlineRetail.csv /user/hadoop/lab_01_var3/raw
-hdfs dfs -ls -h /user/hadoop/lab_01_var3/raw
+### 2) Загрузка исходного CSV в HDFS  
+hdfs dfs -mkdir -p /user/hadoop/lab_01_var3/raw  
+hdfs dfs -put OnlineRetail.csv /user/hadoop/lab_01_var3/raw  
+hdfs dfs -ls -h /user/hadoop/lab_01_var3/raw  
 
 ### 3) Запуск ipynb
 Вполнить в JupyterLab ноутбук Lab01_Var03.ipynb
