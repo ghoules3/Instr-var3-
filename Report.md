@@ -80,6 +80,10 @@ SparkSession создан в JupyterLab:
 ![task2_demand](screenshots/13_task2_demand.png)
 
 ### 6.3 Критически низкий запас и коэффициент оборачиваемости
+- `lead_time_days` = 7
+- `safety_days` = 3
+- `initial_stock_days` = 30
+
 Использована упрощённая модель:
 - `initial_stock_qty = avg_daily_sales * initial_stock_days`
 - `stock_on_hand_qty = initial_stock_qty - total_sold_qty`
