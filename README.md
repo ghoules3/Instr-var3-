@@ -12,11 +12,11 @@
 ## Источник данных
 Датасет https://www.kaggle.com/datasets/jyotikushwaha545/onlineretail
 
-### 1) Запуск Hadoop
-sudo su - hadoop
-start-dfs.sh
-start-yarn.sh
-jps
+### 1) Запуск Hadoop  
+sudo su - hadoop  
+start-dfs.sh  
+start-yarn.sh  
+jps  
 
 ### 2) Загрузка исходного CSV в HDFS  
 hdfs dfs -mkdir -p /user/hadoop/lab_01_var3/raw  
