@@ -10,7 +10,7 @@
 Датасет: https://www.kaggle.com/datasets/jyotikushwaha545/onlineretail
 
 Основные поля:
-- InvoiceNo - номер счета/документа
+- `InvoiceNo` - номер счета/документа
 - `StockCode` - код товара
 - `Description` - описание товара
 - `Quantity` - количество (возможны отрицательные значения для возвратов)
