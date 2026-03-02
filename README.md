@@ -30,5 +30,5 @@ hdfs dfs -ls -h /user/hadoop/lab_01_var3/raw
 Выходные данные сохраняются в:  
 /user/hadoop/lab_01_var3/output/dead_stock_30d  
 /user/hadoop/lab_01_var3/output/low_stock  
-/user/hadoop/lab_01_var3/output/heatmap_table
+/user/hadoop/lab_01_var3/output/heatmap_table  
 /user/hadoop/lab_01_var3/output/plots/heatmap_stock_by_abc.png
