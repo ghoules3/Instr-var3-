@@ -1,0 +1,37 @@
+networks:
+  default:
+    external: true
+    name: nosql-platform
+
+services:
+  graphdb-1:
+    image: khaller/graphdb-free:10.6.2
+    hostname: graphdb-1
+    container_name: graphdb-1
+    labels:
+      com.platys.name: graphdb
+      com.platys.description: Triple/RDF Store
+      com.platys.webui.title: GraphDBs UI
+      com.platys.webui.url: http://localhost:17200
+    ports:
+      - 17200:7200
+    environment:
+      GDB_HEAP_SIZE: 2G
+      GDB_JAVA_OPTS: >-
+        -Xmx2g -Xms2g
+        -Dgraphdb.home=/opt/graphdb
+        -Dgraphdb.workbench.importDirectory=/opt/graphdb/examples
+        -Dgraphdb.workbench.cors.enable=true
+        -Denable-context-index=true
+        -Dentity-pool-implementation=transactional
+        -Dhealth.max.query.time.seconds=60
+        -Dgraphdb.app.request.id.headers=true
+        -Dreuse.vars.in.subselects=true
+    volumes:
+      - ./data-transfer:/data-transfer
+      - ./init/graphdb:/repository.init/
+    restart: unless-stopped
+
+volumes:
+  data-transfer-vol:
+    name: data_transfer_vol
