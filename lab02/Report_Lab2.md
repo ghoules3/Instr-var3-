@@ -58,4 +58,125 @@ sudo docker compose up -d
 ### Импорт RDF-датасета в GraphDB  
 ![](./screenshots/09_graphdb_import_success.jpg)  
   
+# Выполнение Задания 1 (MongoDB / NoSQL)  
+## 3.1. Выбор модели данных  
+Для выполнения задания была использована модель MongoDB.  
+В качестве базы хранения создана коллекция `movies_meta`, содержащая документы с информацией о фильмах.  
   
+Каждый документ включает:  
+-идентификатор фильма  
+-название фильма  
+-год выхода  
+-длительность  
+-рейтинг  
+-количество комментариев  
+-вложенный массив объектов `genres`  
+-массивы `actors` и `directors`  
+  
+Пример структуры документа:  
+```json  
+{
+  "movie_id": "m002",
+  "title": "The Matrix",
+  "year": 1999,
+  "runtime": 136,
+  "rating": 8.7,
+  "comments_count": 1540,
+  "genres": [
+    { "name": "Action" },
+    { "name": "Sci-Fi" },
+    { "name": "Drama" }
+  ],
+  "actors": [
+    { "name": "Keanu Reeves" },
+    { "name": "Laurence Fishburne" }
+  ],
+  "directors": [
+    { "name": "Lana Wachowski" },
+    { "name": "Lilly Wachowski" }
+  ]
+}
+```
+
+## 3.2. Подключение и создание коллекции  
+Подключение к MongoDB выполнялось через оболочку mongosh внутри контейнера:  
+```bash  
+sudo docker exec -it mongo-1 mongosh -u "root" -p "abc123!"  
+```  
+  
+После подключения была выбрана база данных:  
+```JavaScript  
+use streaming_db  
+```
+  
+Для работы использовалась коллекция:  
+```JavaScript  
+db.movies_meta  
+```
+
+Перед загрузкой данных коллекция была очищена:  
+```JavaScript  
+db.movies_meta.drop()  
+```
+
+## 3.3. Загрузка документов  
+В коллекцию movies_meta были добавлены 10 документов с помощью команды insertMany(...).  
+  
+После загрузки данных было проверено количество документов:  
+```JavaScript  
+db.movies_meta.countDocuments()
+```
+  
+Результат:  
+в коллекции успешно создано 10 документов  
+  
+## 3.4. Поиск фильмов с жанром Drama  
+Для поиска фильмов с жанром Drama использовался запрос по вложенному полю массива genres:  
+```JavaScript  
+db.movies_meta.find(
+  { "genres.name": "Drama" },
+  { _id: 0, movie_id: 1, title: 1, year: 1, genres: 1 }
+).pretty()
+```  
+  
+В результате были найдены фильмы:  
+- The Shawshank Redemption  
+- The Matrix  
+- Forrest Gump  
+- Fight Club  
+- Titanic  
+- The Green Mile  
+Это подтверждает корректную работу MongoDB со вложенными массивами объектов.
+![](./screenshots/05_mongo_find_drama.jpg)
+
+## 3.5. Обновление документа  
+Для демонстрации операции обновления был изменён атрибут comments_count у фильма The Matrix.  
+Проверка до обновления:
+```JavaScript  
+db.movies_meta.find(
+  { title: "The Matrix" },
+  { _id: 0, title: 1, comments_count: 1 }
+).pretty()
+```
+  
+Обновление:  
+```JavaScript  
+db.movies_meta.updateOne(
+  { title: "The Matrix" },
+  { $set: { comments_count: 1600 } }
+)
+```
+  
+Проверка после обновления:  
+```JavaScript
+db.movies_meta.find(
+  { title: "The Matrix" },
+  { _id: 0, title: 1, comments_count: 1 }
+).pretty()
+```
+  
+Результат:  
+- документ найден (matchedCount = 1)  
+- документ успешно изменён (modifiedCount = 1)
+![](./screenshots/06_mongo_update.jpg)
+
