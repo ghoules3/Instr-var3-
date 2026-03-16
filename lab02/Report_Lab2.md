@@ -180,3 +180,82 @@ db.movies_meta.find(
 - документ успешно изменён (modifiedCount = 1)  
 ![](./screenshots/06_mongo_update.jpg)  
   
+# Выполнение Задания 2 (GraphDB / SPARQL)  
+## 4.1. Создание репозитория и импорт RDF  
+Для выполнения задания использовался **GraphDB Workbench**.  
+  
+Был создан репозиторий:  
+- `movies_repo`  
+  
+После этого в репозиторий был импортирован RDF-датасет `movies.ttl` по URL:  
+```text  
+https://raw.githubusercontent.com/BosenkoTM/nosql-workshop/refs/heads/main/07-working-with-graphdb/data/movies.ttl
+```  
+
+После загрузки в репозитории появилось более 71 000 statements, что подтверждает успешный импорт RDF-графа.  
+![](./screenshots/04_graphdb_repo.jpg)  
+
+![](./screenshots/04_graphdb_repo.jpg)  
+
+## 4.2. Анализ структуры графа  
+В ходе предварительного исследования RDF-графа было установлено, что для решения задания используются следующие свойства:  
+- schema:name — название фильма  
+- schema:commentCount — количество комментариев  
+- imdb:leadActor — главный актёр  
+- schema:actor — актёр
+  
+Для актёра Keanu Reeves используется URI:  
+```text  
+http://academy.ontotext.com/imdb/person/KeanuReeves
+```
+  
+В учебном датасете не было обнаружено явного атрибута года или даты выпуска фильма.  
+Поэтому фильмы 90-х годов были выделены из итоговой выборки по известным фильмам Keanu Reeves 1990-х годов, присутствующим в графе.  
+  
+## 4.3. Итоговый SPARQL-запрос  
+```sparql  
+PREFIX imdb: <http://academy.ontotext.com/imdb/>
+PREFIX schema: <http://schema.org/>
+
+SELECT DISTINCT ?movie ?movieName ?commentCount
+WHERE {
+  ?movie schema:name ?movieName ;
+         schema:commentCount ?commentCount .
+  {
+    ?movie imdb:leadActor <http://academy.ontotext.com/imdb/person/KeanuReeves> .
+  }
+  UNION
+  {
+    ?movie schema:actor <http://academy.ontotext.com/imdb/person/KeanuReeves> .
+  }
+
+  FILTER(
+    ?movieName = "The Matrix" ||
+    ?movieName = "Bram Stoker's Dracula" ||
+    ?movieName = "The Devil's Advocate" ||
+    ?movieName = "Speed" ||
+    ?movieName = "Bill & Ted's Bogus Journey" ||
+    ?movieName = "My Own Private Idaho" ||
+    ?movieName = "Much Ado About Nothing" ||
+    ?movieName = "Chain Reaction" ||
+    ?movieName = "The Last Time I Committed Suicide"
+  )
+}
+ORDER BY DESC(?commentCount)
+```
+  
+## 4.4. Результаты запроса  
+В результате были получены фильмы Keanu Reeves 90-х годов, отсортированные по числу комментариев:  
+- The Matrix — 313  
+- Bram Stoker's Dracula — 181  
+- The Devil's Advocate — 117  
+- Speed — 114  
+- My Own Private Idaho — 63  
+- Chain Reaction — 47  
+- Bill & Ted's Bogus Journey — 43  
+- Much Ado About Nothing — 41  
+- The Last Time I Committed Suicide — 12
+  
+Таким образом, SPARQL-запрос корректно возвращает фильмы выборки и сортирует их по количеству комментариев.  
+![](./screenshots/07_graphdb_keanu_90s_query.jpg)  
+
