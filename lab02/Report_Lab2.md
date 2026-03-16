@@ -40,5 +40,22 @@ sudo docker compose up -d
 
 В репозитории приложены фактически использованные файлы запуска среды:  
 - docker-compose-mongo.yml  
-- docker-compose-graphdb.yml
-
+- docker-compose-graphdb.yml  
+  
+## Скриншоты развертывания  
+### Запуск MongoDB  
+![](./screenshots/01_mongo_start.jpg)  
+  
+### Запуск GraphDB  
+![](./screenshots/02_graphdb_start.jpg)  
+  
+### Проверка MongoDB через MongoDB Compass  
+![](./screenshots/03_mongo_compass.jpg)  
+  
+### Активный репозиторий GraphDB  
+![](./screenshots/04_graphdb_repo.jpg)  
+  
+### Импорт RDF-датасета в GraphDB  
+![](./screenshots/09_graphdb_import_success.jpg)  
+  
+  
