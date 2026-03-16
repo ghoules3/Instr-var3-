@@ -16,3 +16,29 @@
 1. **MongoDB:** создать коллекцию `movies_meta`, добавить документы с вложенными массивами жанров, найти фильмы с жанром `Drama`.  
 2. **GraphDB / SPARQL:** найти фильмы 90-х годов с участием **Keanu Reeves**, отсортированные по количеству комментариев.  
 3. **Бизнес-аналитика:** оценить популярность **Keanu Reeves** в 90-е годы по количеству комментариев к его фильмам.  
+
+#Развертывание инфраструктуры  
+Работа выполнялась в учебной виртуальной машине с предустановленной Docker-средой.  
+Для запуска MongoDB использовался каталог:  
+```bash  
+cd ~/Downloads/dba/nonrel/mongo  
+sudo docker compose down  
+sudo docker compose up -d  
+```
+  
+Для запуска GraphDB использовался каталог:  
+```bash  
+cd ~/Downloads/dba/nonrel/graphdb  
+sudo docker compose down  
+sudo docker compose up -d    
+```  
+
+В ходе выполнения были использованы следующие интерфейсы:  
+-MongoDB Compass  
+-GraphDB Workbench - http://localhost:17200  
+-JupyterLab - http://localhost:8888  
+
+В репозитории приложены фактически использованные файлы запуска среды:  
+- docker-compose-mongo.yml  
+- docker-compose-graphdb.yml
+
