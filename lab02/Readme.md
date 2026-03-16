@@ -15,12 +15,12 @@
 3. **Аналитика:** построена диаграмма популярности фильмов Keanu Reeves 90-х годов на основе числа комментариев.
 
 ## Структура папки
--`Report_Lab2.md` основной отчёт
--`scripts/` команды MongoDB, SPARQL-запросы и аналитический код
--`data/` используемые данные и выгрузки
--`screenshots/` скриншоты выполнения работы
--`docker-compose-mongo.yml` compose-файл MongoDB-среды
--`docker-compose-graphdb.yml` compose-файл GraphDB-среды
+-`Report_Lab2.md` основной отчёт  
+-`scripts/` команды MongoDB, SPARQL-запросы и аналитический код  
+-`data/` используемые данные и выгрузки  
+-`screenshots/` скриншоты выполнения работы  
+-`docker-compose-mongo.yml` compose-файл MongoDB-среды  
+-`docker-compose-graphdb.yml` compose-файл GraphDB-среды  
 
 Подробное описание выполнения лабораторной работы размещено в файле:
 Report_Lab2.md
