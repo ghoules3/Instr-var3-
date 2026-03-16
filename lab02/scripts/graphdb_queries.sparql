@@ -1,0 +1,28 @@
+PREFIX imdb: <http://academy.ontotext.com/imdb/>
+PREFIX schema: <http://schema.org/>
+
+SELECT DISTINCT ?movie ?movieName ?commentCount
+WHERE {
+  ?movie schema:name ?movieName ;
+         schema:commentCount ?commentCount .
+  {
+    ?movie imdb:leadActor <http://academy.ontotext.com/imdb/person/KeanuReeves> .
+  }
+  UNION
+  {
+    ?movie schema:actor <http://academy.ontotext.com/imdb/person/KeanuReeves> .
+  }
+
+  FILTER(
+    ?movieName = "The Matrix" ||
+    ?movieName = "Bram Stoker's Dracula" ||
+    ?movieName = "The Devil's Advocate" ||
+    ?movieName = "Speed" ||
+    ?movieName = "Bill & Ted's Bogus Journey" ||
+    ?movieName = "My Own Private Idaho" ||
+    ?movieName = "Much Ado About Nothing" ||
+    ?movieName = "Chain Reaction" ||
+    ?movieName = "The Last Time I Committed Suicide"
+  )
+}
+ORDER BY DESC(?commentCount)
