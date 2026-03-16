@@ -32,3 +32,7 @@ hdfs dfs -ls -h /user/hadoop/lab_01_var3/raw
 /user/hadoop/lab_01_var3/output/low_stock  
 /user/hadoop/lab_01_var3/output/heatmap_table  
 /user/hadoop/lab_01_var3/output/plots/heatmap_stock_by_abc.png
+
+# Лабораторная работа 2  
+Бочков Андрей БД251-м Вариант №3  
+Практическая работа 2 лежит в папке `lab02/`
