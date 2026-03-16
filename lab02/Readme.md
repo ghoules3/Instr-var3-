@@ -22,5 +22,4 @@
 -`docker-compose-mongo.yml` compose-файл MongoDB-среды  
 -`docker-compose-graphdb.yml` compose-файл GraphDB-среды  
 
-Подробное описание выполнения лабораторной работы размещено в файле:
-Report_Lab2.md
+Подробное описание выполнения лабораторной работы размещено в файле Report_Lab2.md
