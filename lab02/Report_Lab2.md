@@ -177,6 +177,6 @@ db.movies_meta.find(
   
 Результат:  
 - документ найден (matchedCount = 1)  
-- документ успешно изменён (modifiedCount = 1)
-![](./screenshots/06_mongo_update.jpg)
-
+- документ успешно изменён (modifiedCount = 1)  
+![](./screenshots/06_mongo_update.jpg)  
+  
